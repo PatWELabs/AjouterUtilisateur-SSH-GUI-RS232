@@ -1,0 +1,26 @@
+#pragma once
+LRESULT CALLBACK ProcedurePrincipale(HWND, UINT, WPARAM, LPARAM);
+void CreerBarreOutil(HWND);
+void InitTabs(HWND);
+void InitConsole(HWND);
+void ConsolePaint2(HWND, HDC);
+int OpenCOM(const char* port);
+void CloseCOM();
+int AutoBaud(DWORD* foundBaud);
+void BuildSSHScript(char script[][256], int* count, const char* user, const char* pass);
+void SendSSHScript(char script[][256], int count, const char* enablePassword);
+void SetFixedWindow(HWND hWnd);
+void DetectCOMPorts(HWND hCombo);
+void InitConsole(HWND hParent);
+void CreerBarreOutil(HWND hWnd);
+LRESULT CALLBACK ConsoleProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+void RegisterConsoleClass();
+void SerialSendRaw(const char* s);
+void SerialSendLine(const char* s);
+int SerialReadNonBlocking(char* buf, int maxLen, DWORD timeoutMs);
+DWORD WINAPI RXThread(LPVOID lp);
+int OpenCOM(const char* port);
+void CloseCOM();
+int AutoBaud(DWORD* foundBaud);
+int DetectPromptInBuffer(const char* s);
+LRESULT CALLBACK ProcedurePrincipale(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
